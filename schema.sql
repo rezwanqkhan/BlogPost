@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS posts (
 -- Create the users table
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT UNIQUE NOT NULL,  -- Make the username field unique
+    username TEXT UNIQUE NOT NULL,
     email TEXT UNIQUE NOT NULL,
     password TEXT NOT NULL,
     is_admin INTEGER DEFAULT 0 -- 0 for regular users, 1 for admins

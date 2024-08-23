@@ -37,7 +37,7 @@ def get_user_by_id(user_id):
     conn = get_connection()
     user = conn.execute('SELECT * FROM users WHERE id = ?', (user_id,)).fetchone()
     conn.close()
-    return user
+    return user if user else {'username': 'Unknown User'}
 
 
 # Function to get all users (for admin view)
@@ -56,7 +56,6 @@ def index():
     posts = conn.execute('SELECT * FROM posts').fetchall()
     conn.close()
     return render_template("index.html", posts=posts, get_user_by_id=get_user_by_id)
-
 
 @app.route("/<int:post_id>")
 def post(post_id):
@@ -165,7 +164,6 @@ def login():
     return render_template('login.html')
 
 
-
 @app.route('/admin_dashboard')
 def admin_dashboard():
     if 'username' not in session or not session.get('is_admin'):
@@ -209,25 +207,30 @@ def register():
             return redirect(url_for('login'))
     return render_template('register.html')
 
-@app.route('/<int:id>/delete', methods=('GET', 'POST'))
-def delete_user(Id):
-    if 'username' not in session or not session['is_admin']:
+
+@app.route('/<int:id>/deleteuser', methods=('GET', 'POST'))
+def delete_user(id):
+    if 'username' not in session or not session.get('is_admin', False):
         flash('You are not authorized to perform this action.')
         return redirect(url_for('index'))
 
-    # Check if the post exists
-    user = get_user_by_id(Id)
+    # Check if the user exists
+    user = get_user_by_id(id)
     if user is None:
-        flash('Post does not exist.')
+        flash('User does not exist.')
         return redirect(url_for('index'))
 
     # Perform the deletion
-    conn = get_connection()
-    conn.execute('DELETE FROM users WHERE id = ?', (Id,))
-    conn.commit()
-    conn.close()
+    try:
+        conn = get_connection()
+        conn.execute('DELETE FROM users WHERE id = ?', (id,))
+        conn.commit()
+        conn.close()
+        flash('User deleted successfully.')
+    except Exception as e:
+        flash(f'An error occurred: {e}')
+        return redirect(url_for('index'))
 
-    flash('user deleted successfully.')
     return redirect(url_for('admin_dashboard'))
 
 
