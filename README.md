@@ -58,6 +58,7 @@ As an admin, you can:
 - Python
 - Flask
 - SQLite
+- JS
 - HTML/CSS
 
 
