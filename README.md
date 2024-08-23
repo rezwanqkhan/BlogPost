@@ -65,20 +65,23 @@ As an admin, you can:
 
 Below are some screenshots of the application in action:
 
-![Home Page](screenshots/login.png)
-*Caption: The user login interface*
 
-![Login Page](screenshots/register.png)
-*Caption: The user register interface*
-
-![Login Page](screenshots/login_page.png)
-*Caption: The user login interface*
-| <img width="400" alt="The user login interface" src="screenshots/login_page.png"> | <img width="400" alt="The user register interface" src="screenshots/register.png"> |
+| <img width="400" alt="The user login interface" src="screenshots/login.png"> | <img width="400" alt="The user register interface" src="screenshots/register.png"> |
 |:--------------------------------------------------------------------------------:|:--------------------------------------------------------------------------------:|
 | Caption: The user login interface                                                | Caption: The user register interface                                              |
 
-![Login Page](screenshots/main_screen.png)
-*Caption: The user login interface*
+---
+| <img width="400" alt="The user login interface" src="screenshots/main_screen.png"> | <img width="400" alt="The user register interface" src="screenshots/new_post_by_user.png"> |
+|:----------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------:|
+|                      Caption: The user main screen interface                       |                            Caption: The user add post interface                            |
+
+---
+| <img width="400" alt="The user login interface" src="screenshots/admin_delete_user.png"> | <img width="400" alt="The user register interface" src="screenshots/admindeleteposts.png"> |
+|:----------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------:|
+|             Caption: Admin interface for user management and post moderation             |                  Admin interface for user management and post moderation                   |
+
+---
+
 ## Author
 
 Rezwanullah Khan
